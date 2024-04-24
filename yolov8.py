@@ -33,6 +33,6 @@ if __name__ == "__main__":
         for obj in objects:
             datos.loc[len(datos)]={"image_name": image_name, "class": net.class_names[int(obj.label)], "confidence": obj.prob*100, "tiempo_inferencia": elapsed}
 
-        cv2.imwrite("resultados/"+image_name+"_results.png", img_analizada)
+        cv2.imwrite("resultados/results_"+image_name, img_analizada)
 
     datos.to_csv("datos.csv", index=False)
