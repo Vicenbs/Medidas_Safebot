@@ -21,6 +21,7 @@ if __name__ == "__main__":
 
     for image_name in image_files:
         imagepath = os.path.join(image_folder, image_name)
+        print(imagepath)
         m = cv2.imread(imagepath)
         if m is None:
             print("cv2.imread %s failed\n" % (imagepath))
