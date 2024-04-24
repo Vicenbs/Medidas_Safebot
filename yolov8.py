@@ -28,11 +28,11 @@ if __name__ == "__main__":
         t = time.time()
         objects = net(m)
         elapsed = time.time() - t
-        draw_detection_objects(m, net.class_names, objects)
+        img_analizada = draw_detection_objects(m, net.class_names, objects)
 
         for obj in objects:
             datos.loc[len(datos)]={"image_name": image_name, "class": net.class_names[int(obj.label)], "confidence": obj.prob*100, "tiempo_inferencia": elapsed}
 
-        cv2.imwrite("resultados/"+image_name+"_results.png", m)
+        cv2.imwrite("resultados/"+image_name+"_results.png", img_analizada)
 
     datos.to_csv("datos.csv", index=False)
