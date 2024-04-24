@@ -31,7 +31,7 @@ if __name__ == "__main__":
         draw_detection_objects(m, net.class_names, objects)
 
         for obj in objects:
-            datos = datos.loc[len(datos)]={"image_name": image_name, "class": net.class_names[int(obj.label)], "confidence": obj.prob*100, "tiempo_inferencia": elapsed}
+            datos.loc[len(datos)]={"image_name": image_name, "class": net.class_names[int(obj.label)], "confidence": obj.prob*100, "tiempo_inferencia": elapsed}
 
         cv2.imwrite("resultados/"+image_name+"_results.png", m)
 
