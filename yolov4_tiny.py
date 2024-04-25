@@ -23,7 +23,7 @@ if __name__ == "__main__":
             print("cv2.imread %s failed\n" % (imagepath))
             sys.exit(0)
         t = time.time()
-         try:
+        try:
             objects = net(m)
             elapsed = time.time() - t
             if objects is not None:  # Add this check
