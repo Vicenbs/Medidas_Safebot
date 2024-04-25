@@ -23,12 +23,17 @@ if __name__ == "__main__":
             print("cv2.imread %s failed\n" % (imagepath))
             sys.exit(0)
         t = time.time()
-        objects = net(m)
-        if objects is not None:  # Add this check
+         try:
+            objects = net(m)
             elapsed = time.time() - t
-            imagen_infer = draw_detection_objects(m, net.class_names, objects)
-            for obj in objects:
-                datos.loc[len(datos)]={"image_name": image_name, "class": net.class_names[int(obj.label)], "confidence": obj.prob*100, "tiempo_inferencia": elapsed}
-            cv2.imwrite("resultados/"+image_name+"_results.png", imagen_infer)
+            if objects is not None:  # Add this check
+                imagen_infer = draw_detection_objects(m, net.class_names, objects)
+
+                for obj in objects:
+                    datos.loc[len(datos)]={"image_name": image_name, "class": net.class_names[int(obj.label)], "confidence": obj.prob*100, "tiempo_inferencia": elapsed}
+                cv2.imwrite("resultados/"+image_name+"_results.png", imagen_infer)
+        except:
+            print("Error en la inferencia de la imagen: ", image_name)
+            cv2.imwrite("resultados/"+image_name+"_results.png", m)
 
     datos.to_csv("datos_yolov4_tiny.csv", index=False)
