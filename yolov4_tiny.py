@@ -10,7 +10,8 @@ if __name__ == "__main__":
     image_folder = "images"
     image_files = os.listdir(image_folder)
     net = get_model(
-            "yolov7_tiny"
+            "yolov7_tiny",
+        use_gpu=False
         )
     datos = pd.DataFrame(columns=["image_name", "class", "confidence", "tiempo_inferencia"])
 
