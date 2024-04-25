@@ -15,7 +15,7 @@ if __name__ == "__main__":
             prob_threshold=0.25,
             nms_threshold=0.45,
             num_threads=4,
-            use_gpu=True,
+            use_gpu=False,
         )
     datos = pd.DataFrame(columns=["image_name", "class", "confidence", "tiempo_inferencia"])
 
