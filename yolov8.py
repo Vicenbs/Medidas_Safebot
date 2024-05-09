@@ -40,4 +40,4 @@ if __name__ == "__main__":
             print("Error en la inferencia de la imagen: ", image_name)
             cv2.imwrite("resultados/"+image_name+"_results.png", m)
 
-    datos.to_csv("datos.csv", index=False)
+    #datos.to_csv("datos.csv", index=False)

@@ -1,0 +1,4 @@
+{
+    "ros.distro": "foxy",
+    "git.ignoreLimitWarning": true
+}
